@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+
+
+<header th:fragment = "header_prev(title)">
+    <div class="headerTopSub">
+        <div class="headerTop__title">
+            <button type="button" class="btnPrev headerBtnMain"><span class="icoPrev"></span></button>
+            <h3 class="hty3 header_title" th:text="${title}"></h3>
+        </div>
+        <div class="headerTop__Button">
+            <button type="button" class="headerTop__menu">메뉴오픈</button>
+        </div>
+    </div>
+</header>
+
+<header th:fragment = "header(title)">
+    <div class="headerTopSub">
+        <div class="headerTop__title">
+            <h3 class="hty3 header_title" th:text="${title}"></h3>
+        </div>
+        <div class="headerTop__Button">
+            <button type="button" class="headerTop__menu">메뉴오픈</button>
+        </div>
+    </div>
+</header>
+
+</body>
+</html>

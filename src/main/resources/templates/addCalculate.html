@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/default :: default_ts(~{::title}, ~{::script})}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산기 리스트</title>
+    
+    <script defer type="text/javascript" src="/js/addCalculate.js"></script>
+    <script type="text/javascript" charSet="utf-8">
+        $(function () {
+            init();
+        });
+    </script>
+</head>
+<body>
+<div id="wrap" class="sub">
+    <div th:replace="~{layout/header :: header_prev('일반 계산기')}"></div>
+    
+    <section class="subSection">
+        <div class="subSectionConts">
+            
+            <div class="calculator">
+                <div class="result"></div>
+                <div class="content">
+                    <div class="key-wrap">
+                        <button class="num" value="AC">AC</button>
+                        <button class="num" value="C">C</button>
+                        <button class="num" value="(">(</button>
+                        <button class="num" value=")">)</button>
+                        
+                        <button class="num" value="1">1</button>
+                        <button class="num" value="2">2</button>
+                        <button class="num" value="3">3</button>
+                        <button class="num" value="+">+</button>
+                        
+                        <button class="num" value="4">4</button>
+                        <button class="num" value="5">5</button>
+                        <button class="num" value="6">6</button>
+                        <button class="num" value="-">-</button>
+                        
+                        <button class="num" value="7">7</button>
+                        <button class="num" value="8">8</button>
+                        <button class="num" value="9">9</button>
+                        <button class="num" value="*">x</button>
+                        
+<!--                        <button class="num" value="random">난수</button>-->
+                        <button class="num random" value="random">난수</button>
+                        <button class="num" value="0">0</button>
+                        <button class="num" value="/">/</button>
+                        <button class="num num_blue lastBtn" value="result">=</button>
+                    
+                    </div>
+                    <!--            <div class="calc-wrap"></div>-->
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <div class="subSectionBtm">
+        <button type="button" class="btnTy2 addBtn">저장</button>
+    </div>
+
+</div>
+
+
+</body>
+</html>
