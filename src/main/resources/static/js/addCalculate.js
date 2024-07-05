@@ -39,12 +39,11 @@ function eventBind(){
                 G_CALCULATE_OBJ.data += randomText;
                 break;
             case "result":
-                //계산 결과를 표시하고 버퍼 초기화(초기화를 후에 해야 함)
-                // $('.pane').innerText = calc(bufferData);
-                // bufferData = ''
-                
                 let result = calculateStringExpression(G_CALCULATE_OBJ.data);
-                console.log(result)
+                if(isNaN(result)){
+                    toast('잘못된 식입니다. 다시 입력해주세요.');
+                }
+                
                 break;
             default:
                 //버퍼에 입력 숫자와 연산자 누적
@@ -166,21 +165,25 @@ function calculateStringExpression(expression) {
 
 function setMachine(){
     const mode = Util_GetParam('mode');
+    let textObj = {
+        random : '',
+    }
     
     switch (mode) {
         case 'normal':
-            $('.random').html('');
-            
-            
+           
             break;
         case 'add':
-            
+            textObj.random = '난수';
+          
             $('.header_title').html('계산기 저장');
             $('.lastBtn').html('식');
-            $('.lastBtn').removeClass('num_blue');
-            
-            // $('.lastBtn').val('saveBtn');
+            $('.subSectionBtm').show();
             
             break;
     }
+    
+    $('.random').html(textObj.random);
+    
+    
 }

@@ -6,9 +6,12 @@
 
 
 <header th:fragment = "header_prev(title)">
+    <script>
+        headerEvent();
+    </script>
     <div class="headerTopSub">
         <div class="headerTop__title">
-            <button type="button" class="btnPrev headerBtnMain"><span class="icoPrev"></span></button>
+            <button type="button" class="btnPrev headerBtnPrev"><span class="icoPrev"></span></button>
             <h3 class="hty3 header_title" th:text="${title}"></h3>
         </div>
         <div class="headerTop__Button">

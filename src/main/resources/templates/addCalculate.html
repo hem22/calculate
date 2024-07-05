@@ -15,13 +15,14 @@
 </head>
 <body>
 <div id="wrap" class="sub">
+
     <div th:replace="~{layout/header :: header_prev('일반 계산기')}"></div>
     
     <section class="subSection">
         <div class="subSectionConts">
             
             <div class="calculator">
-                <div class="result"></div>
+                <div class="result">0</div>
                 <div class="content">
                     <div class="key-wrap">
                         <button class="num" value="AC">AC</button>
@@ -44,11 +45,10 @@
                         <button class="num" value="9">9</button>
                         <button class="num" value="*">x</button>
                         
-<!--                        <button class="num" value="random">난수</button>-->
-                        <button class="num random" value="random">난수</button>
+                        <button class="num" value="random"></button>
                         <button class="num" value="0">0</button>
                         <button class="num" value="/">/</button>
-                        <button class="num num_blue lastBtn" value="result">=</button>
+                        <button class="num num_green lastBtn" value="result">=</button>
                     
                     </div>
                     <!--            <div class="calc-wrap"></div>-->
@@ -57,7 +57,8 @@
         </div>
     </section>
     
-    <div class="subSectionBtm">
+<!--    <span th:text="${param.mode}"></span>-->
+    <div class="subSectionBtm" style="display: none">
         <button type="button" class="btnTy2 addBtn">저장</button>
     </div>
 

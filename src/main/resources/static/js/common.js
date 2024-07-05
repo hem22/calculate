@@ -27,3 +27,31 @@ function Util_GetParam(name, decodeURIBehindFlag) {
     }
     return rtnval;
 }
+
+function headerEvent(){
+    $(document).on('click', '.headerTop__title .headerBtnPrev', function(){
+        history.back();
+    })
+}
+
+
+
+function toast(msg, cb, duration){
+    siiimpleToast.success(msg,
+        {
+            container: 'body',
+            class: 'siiimpleToast',
+            position: 'bottom|center',
+            margin: 15,
+            delay: 0,
+            duration: duration? duration : 2000,
+            style: {},
+        }
+    );
+    if(cb){
+        setTimeout(function(){
+            cb();
+        },  duration? duration : 2000);
+    }
+}
+
