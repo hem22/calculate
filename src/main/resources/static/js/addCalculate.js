@@ -2,6 +2,7 @@ const G_RANDOM_ARRAY = [
     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
     'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
 ]
+
 let G_CALCULATE_OBJ = {
     data : 0,                   // 현재 식
     randomNum : 0,              // 난수의 갯수
@@ -42,7 +43,12 @@ function eventBind(){
                 let result = calculateStringExpression(G_CALCULATE_OBJ.data);
                 if(isNaN(result)){
                     toast('잘못된 식입니다. 다시 입력해주세요.');
+                }else{
+                    G_CALCULATE_OBJ.data = result;
                 }
+                break;
+            case "addFormula" :
+                toast('개발중');
                 
                 break;
             default:
@@ -51,9 +57,21 @@ function eventBind(){
                 break;
         }
         
+        if(G_CALCULATE_OBJ.data === ''){
+            G_CALCULATE_OBJ.data = 0;
+        }
         $('.result').html(G_CALCULATE_OBJ.data);
     })
     
+    
+    
+    $(document).on('click', '.addBtn', function(){
+        
+        let data = G_CALCULATE_OBJ.data;
+        let result = calculateStringExpression(data);
+        
+        console.log(result)
+    })
     
 }
 
@@ -86,6 +104,7 @@ function calculateStringExpression(expression) {
         
         for (let i = 0; i < expression.length; i++) {
             let token = expression[i];
+            console.log(token)
             
             if (isDigit(token) || token === '.') {
                 numberBuffer += token;
@@ -110,6 +129,9 @@ function calculateStringExpression(expression) {
                         outputQueue.push(operatorStack.pop());
                     }
                     operatorStack.pop();
+                } else if (token.charCodeAt()){
+                    // 랜덤 숫자 추가
+                    operatorStack.push(token.charCodeAt());
                 }
             }
         }
@@ -156,7 +178,8 @@ function calculateStringExpression(expression) {
     }
     
     // 공백 제거 및 후위 표기법으로 변환
-    let postfix = infixToPostfix(expression.replace(/\s+/g, ''));
+    let postfix = infixToPostfix(expression.toString().replace(/\s+/g, ''));
+    console.log(postfix)
     // 후위 표기법 계산
     return evaluatePostfix(postfix);
 }
@@ -167,23 +190,29 @@ function setMachine(){
     const mode = Util_GetParam('mode');
     let textObj = {
         random : '',
+        value : '',
     }
     
     switch (mode) {
         case 'normal':
-           
+            textObj.random = '.';
+            textObj.value = '.';
             break;
+            
         case 'add':
-            textObj.random = '난수';
-          
+            textObj.random = '미지수';
+            textObj.value = 'random';
+            
+            $('.num_random').addClass('threeWord');
+            
             $('.header_title').html('계산기 저장');
-            $('.lastBtn').html('식');
+            $('.lastBtn').addClass('threeWord').html('식추가').val('addFormula');
             $('.subSectionBtm').show();
             
+
             break;
     }
     
-    $('.random').html(textObj.random);
-    
+    $('.num_random').html(textObj.random).val(textObj.value);
     
 }
