@@ -1,0 +1,46 @@
+@charset "utf-8";
+a, address, area, article, aside, audio, b, body, br, button, canvas,
+caption, cite, code, col, colgroup, dd, del, div, dl, dt, em, embed, fieldset,
+figcaption, figure, footer, form, frame, frameset, h1, h2, h3, h4, h5,
+h6, head, header, hr, html, i, iframe, img, ins, input, label, legend, li,
+link, map, meta, nav, object, ol, p, pre, q, rp, rt, ruby, s, script,
+section, select, source, span, strong, style, sub, summary, sup, table,
+tbody, td,textarea, tfoot, th, thead, time, title, tr, u, ul, video{margin: 0; padding: 0; font-family: inherit; font-style: normal; font-weight: inherit; font-size: inherit; line-height: inherit; text-decoration: inherit; color: inherit; vertical-align: top; outline: none;box-sizing: border-box;}
+header,footer,section,article,aside,nav,hgroup,details,menu,figure,figcaption{display:block}
+ul,ol,li{list-style: none;}
+img,hr{border: none;}
+p{max-height: 999999px;} /* font boosting 폰트크기가 잘안먹을때 사용*/
+table{width: 100%; border-spacing: 0; table-layout: fixed;border:0;border-collapse: collapse}
+th,td{vertical-align: middle;}
+label {cursor: pointer;}
+a,button,label{display:inline-block}
+legend, caption{visibility: hidden; overflow: hidden; width: 0px; height: 0px; font-size: 0px; line-height: 0px; border: none; background: none; position: absolute; left: -9999em; top: -9999em; opacity: 0;}
+fieldset,iframe {border: none;}
+sup,sub{line-height: 1;font-size:0.675em}
+label, input, button, select, img{vertical-align:middle}
+button{cursor:pointer;outline:none;background:none;display: inline-block;}
+label{cursor: pointer}
+input, select, textarea{display: inline-block;box-sizing: border-box;-webkit-appearance: none;-webkit-border-radius: 0;}
+input[type=tel],input[type=text],input[type=number],input[type=email],input[type=password],input[type=month],input[type=date]{box-sizing:border-box;-webkit-appearance:none;appearance:none;}
+textarea{width: 100%;box-sizing: border-box}
+select::-ms-expand{display: none;}
+::-webkit-input-placeholder{color: #888;}
+::-moz-placeholder{color: #888;}
+:-ms-input-placeholder{color: #888;}
+:-moz-placeholder{color: #888;}
+::-moz-selection{background: #222; color: #ffffff;}
+::selection{background: #222; color: #ffffff;}
+a:link{text-decoration: none}
+a:hover{text-decoration: none;}
+a:visited{text-decoration: none;}
+a:active{text-decoration: none;outline: none;}
+a:focus{text-decoration: none;}
+#accessibility{position:relative}
+#accessibility a{display:block;height:1px;width:1px;margin-bottom:-1px;overflow:hidden;text-align:center;color:#000;white-space:nowrap}
+#accessibility a:focus,
+#accessibility a:active{position:absolute;height:auto;width:100%;padding:5px;margin-bottom:10px;width:100%;background:#fff;z-index:9999}
+.skip, legend{position:absolute;left:-5000px}
+.skip, legend, caption{visibility:hidden;width:0;height:0;font-size:0;line-height:0;overflow:hidden}
+.sr-only{position: absolute;clip:rect(1px 1px 1px 1px);}
+.hide {visibility: hidden; overflow: hidden; position: absolute; left: -9999em; top: -9999em; width: 0px; height: 0px; border: none; background: none; font-size: 0px; line-height: 0px; opacity: 0;}
+strong{font-weight:700}

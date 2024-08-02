@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>계산기 리스트</title>
     
-    <script defer type="text/javascript" src="/js/addCalculate.js"></script>
+    <script defer type="text/javascript" src="/js/addSik.js"></script>
     <script type="text/javascript" charSet="utf-8">
         $(function () {
             init();
@@ -58,7 +58,14 @@
     </section>
     
 <!--    <span th:text="${param.mode}"></span>-->
+ 
+    
     <div class="subSectionBtm" style="display: none">
+        <div class="addTitleDiv">
+            <input type="text" required class="sikTitle">
+            <label>제목</label>
+        </div>
+        
         <button type="button" class="btnTy2 addBtn">저장</button>
     </div>
 

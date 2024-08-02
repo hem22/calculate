@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/default :: default_ts(~{::title}, ~{::script})}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>계산기 리스트</title>
+    
+    <script defer type="text/javascript" src="/js/detail.js"></script>
+    <script type="text/javascript" charSet="utf-8">
+        $(function () {
+            init();
+        });
+    </script>
+</head>
+<body>
+<div id="wrap" class="sub">
+    <div th:replace="~{layout/header :: header_prev('계산식')}"></div>
+    
+    <section class="subSection">
+        <div class="subSectionConts">
+            <div class="sub-top">
+                <ul class="linkLst board addLocalList">
+                    <li>
+                        <div class="boardTit width100per">
+                            <p class="center sikDiv"></p>
+                        </div>
+                    </li>
+<!--                    <li>-->
+<!--                        <div class="boardTit">-->
+<!--                            <p class="center sikResult"></p>-->
+<!--                        </div>-->
+<!--                    </li>-->
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    <!--    <span th:text="${param.mode}"></span>-->
+    
+    <div class="dropdownMenu">
+        <p class="expText">숫자를 입력하거나 이전 결과값을 선택해주세요.</p>
+        <ul class="menu">
+<!--            <li>-->
+<!--                <a href="javascript:">A</a>-->
+<!--                <ul class="depth_1">-->
+<!--                    <li><a href="javascript:" class="li_number">숫자</a></li>-->
+<!--                    <li><a href="javascript:" class="li_sik">식</a></li>-->
+<!--                </ul>-->
+<!--            </li>-->
+        </ul>
+    </div>
+    
+    <div class="subSectionBtm">
+        <button type="button" class="btnTy2 resetBtn">이전 값 reset</button>
+    </div>
+    
+
+</div>
+
+
+</body>
+</html>

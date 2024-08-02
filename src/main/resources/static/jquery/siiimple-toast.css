@@ -6,6 +6,7 @@
 /* 	min-width: 250px; */
 	z-index: 999999;
 	border-radius: 19px;
+	/*color: #fff;*/
 	color: #fff;
 	font-weight: 300;
 	white-space: nowrap;
@@ -24,7 +25,8 @@
 }
 
 .siiimpleToast[data-state=success] {
-	background-color: #8bc34a;
+	/*background-color: #8bc34a;*/
+	background-color: #87C;
 }
 
 .siiimpleToast[data-state=alert] {

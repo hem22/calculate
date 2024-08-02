@@ -1,6 +1,11 @@
 :root {
     --mc1: #dbdef0;
     --mc2: #f0dbef;
+    /*--greenBg:#8bc34a;*/
+    --greenBg:	#7B68EE;
+    --deepGreen:#9370DB;
+    --grayBg:#F3F3F3; /*gray배경*/
+    --grayLine:#E0E0E0; /*gray라인*/
 }
 
 
@@ -20,7 +25,7 @@ header.fixed {
     position: fixed;
     width: 100%;
     background-color: #fff;
-    box-shadow: 0px 2px 4px rgb(0 0 0 / 15%);
+    box-shadow: 0 2px 4px rgb(0 0 0 / 15%);
     animation: slideIn 0.5s forwards;
     z-index: 12;
 }
@@ -76,6 +81,7 @@ header.fixed {
 
 
 .subSectionBtm {
+    text-align: center;
     flex-shrink: 0;
     margin-top: auto;
     padding: 1.25rem 1.25rem 2.5rem 1.25rem;
@@ -101,17 +107,27 @@ header.fixed {
     display: inline-block;
     width: 100%;
     border-radius: 20rem;
-    padding: 1.357rem;
+    padding: 1rem;
     font-size: 1.143rem;
     line-height: 1.25;
     border: 0;
     font-weight: bold;
     text-align: center;
 }
-.btnTy1 {
-    /*background-color: var(--hc1);*/
-    /*color: #fff*/
+
+.btnTy2.green,
+.delBtn.active {
+    background-color: var(--deepGreen);
+    color:white;
 }
+
+.btnTy2.half{;
+    background-color: var(--deepGreen);
+    color:white;
+    width: 48%;
+    margin: 0.1rem;
+}
+
 
 
 .sub-top {
@@ -120,7 +136,6 @@ header.fixed {
 
 .linkLst li {
     border-bottom: 1px solid var(--grayStep1);
-    display: flex;
     justify-content: start;
 }
 
@@ -214,10 +229,295 @@ a:focus {
     margin:0.5rem;
 }
 
-.num_green {
-    background: #8bc34a;
+.num_green,
+.threeWord{
+    background: var(--greenBg);
+    color:white;
 }
 
 .threeWord{
-    font-size: 1.2rem;
+    font-size: 1rem;
+}
+
+
+/* list 화면 ul li*/
+.addLocalList li, ul{
+    list-style: none;
+    padding:0;
+    margin:0;
+}
+
+.linkLst.board{
+    margin-bottom: 5rem;
+}
+
+.linkLst li{
+    display: flex;
+    border-bottom: 1px solid var(--grayBg);
+}
+
+.linkLst li a{
+    display: flex;
+    width: 100%;
+    padding: 1.5rem 0;
+    background: url(/image/ico-arr-link.svg) 98% 50% no-repeat;
+    background-size: 0.75rem;
+    font-size: 1.133rem;
+    font-weight: bold;
+}
+
+.linkLst li a{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    font-family: 'NotoSans';
+}
+.boardTit{
+    padding:0;
+}
+.boardTit p{
+    padding:0;
+    margin:0;
+    word-break: break-all;
+    line-height: 2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-family: 'NotoSans';
+}
+.linkLst li a .boardTit p{
+    width: 90%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.boardTit .new{
+    display: inline-block;
+    padding: 0 1rem;
+    margin-right: 0.5rem;
+    background-size: 95%;
+
+}
+.boardInfo{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    font-weight: 300;
+    color: #707070;
+    font-size: 0.913rem;
+    font-family: 'NotoSans';
+}
+.boardInfo p{
+    margin:0 3.2rem;
+}
+
+.boardInfo .btnWrap button{
+    margin-left: 0.5rem;
+    padding: 0 1.5rem;
+}
+
+.delCheckbox {
+    margin-right:10px;
+    transform : scale(1.2);
+}
+
+
+
+
+.linkLst .center{
+    text-align: center;
+    padding: 2rem;
+}
+
+.sikDiv{
+    letter-spacing : 5px;
+}
+
+/*.dropdownMenu ul{*/
+/*    list-style:none;*/
+/*    text-align: center;*/
+/*}*/
+
+/*.dropdownMenu a {*/
+/*    text-decoration: none;*/
+/*    color: #333;*/
+/*}*/
+
+/*.dropdownMenu .menu:after {*/
+/*    display: block;*/
+/*    clear: both;*/
+/*}*/
+
+/*.dropdownMenu .menu > li {*/
+/*    position: relative;*/
+/*    float: left;*/
+/*    margin: 0 0.5rem 5rem 0.5rem;*/
+/*    width:45%*/
+/*}*/
+
+/*.dropdownMenu .menu > li > a {*/
+/*    display: block;*/
+/*    padding: 0 15px;*/
+/*    background: #333;*/
+/*    height: 40px;*/
+/*    line-height: 40px;*/
+/*    color: #fff;*/
+/*}*/
+
+/*.dropdownMenu .menu > li:hover .depth_1 {*/
+/*    display: block;*/
+/*}*/
+
+/*.dropdownMenu .menu .depth_1  {*/
+/*    display: none;*/
+/*    position: absolute;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    text-align: center;*/
+/*}*/
+
+/*.dropdownMenu .menu .depth_1 a{*/
+/*    display: block;*/
+/*    padding: 5px;*/
+/*    background: #666;*/
+/*    color: #fff;*/
+/*}*/
+
+
+.dropdownMenu ul{
+    list-style:none;
+    text-align: center;
+}
+
+.dropdownMenu a {
+    text-decoration: none;
+    color: var(--greenBg);
+}
+
+.dropdownMenu .menu:after {
+    display: block;
+    clear: both;
+}
+
+.dropdownMenu .menu li {
+    border-top: 0.5px solid #ffffff;
+}
+
+.dropdownMenu .menu > li {
+    position: relative;
+    float: left;
+    margin: 0 0.5rem 5rem 0.5rem;
+    width:45%;
+}
+
+.dropdownMenu .menu > li > a {
+    display: block;
+    padding: 0 15px;
+    background: var(--greenBg);
+    height: 40px;
+    line-height: 40px;
+    color: #fff;
+}
+
+.dropdownMenu .menu > li:hover .depth_1 {
+    display: block;
+}
+
+.dropdownMenu .menu .depth_1 {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.dropdownMenu .menu .depth_1 a {
+    display: block;
+    padding: 5px;
+    /*background: #56792e;*/
+    background: var(--deepGreen);
+    color: #fff;
+}
+
+.dropdownMenu .menu .depth_1 li:hover .depth_2 {
+    display: block;
+}
+
+.dropdownMenu .menu .depth_2 {
+    display: none;
+    position: absolute;
+    text-align: center;
+    width:100%;
+}
+
+.dropdownMenu .menu .depth_2 a {
+    display: block;
+    padding: 5px;
+    background: var(--greenBg);
+    color: #fff;
+}
+
+
+.li_number_input {
+    opacity:0;
+    width:0;
+    margin:-8px;
+}
+
+
+
+.addTitleDiv {
+    position: relative;
+    width: 100%;
+    margin: 4rem 0.4rem 1rem 0.4rem;
+}
+
+.addTitleDiv input {
+    font-size: 15px;
+    color: #222222;
+    width: 90%;
+    border: none;
+    border-bottom: solid #aaaaaa 1px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    position: relative;
+    background: none;
+    z-index: 5;
+}
+
+.addTitleDiv input::placeholder { color: #aaaaaa; }
+.addTitleDiv input:focus { outline: none; }
+
+.addTitleDiv label {
+    position: absolute;
+    color: #aaa;
+    left: 10px;
+    font-size: 20px;
+    bottom: 8px;
+    transition: all .2s;
+}
+
+.addTitleDiv input:focus ~ label, input:valid ~ label {
+    font-size: 16px;
+    bottom: 40px;
+    color: #666;
+    font-weight: bold;
+}
+
+.addTitleDiv input:focus ~ span, input:valid ~ span {
+    width: 100%;
+}
+
+
+.expText {
+
+    font-size: 0.8rem !important;
+    padding: 0 2rem 1rem 2rem !important;
+    font-weight: 100 !important;
+    color:#aaaaaa !important;
+    text-align: center !important;
+}
+
+.width100per {
+    width:100%
 }
