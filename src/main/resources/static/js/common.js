@@ -5,7 +5,6 @@ const G_RANDOM_ARRAY = [
 ]
 
 let GLOBAL_LOCAL_LIST = [];
-let GLOBAL_LOCAL_HISTORY = [];
 
 
 

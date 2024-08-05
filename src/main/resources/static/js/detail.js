@@ -1,4 +1,5 @@
 let G_DETAIL_SIK = null;
+let G_SIK_NUMBER = null;
 
 function init(){
     getLocalAddList(getDetailSik);
@@ -70,28 +71,28 @@ function setResultSik(li){
 
 function changeMainSik(randomCode, num){
     
-    let changeSik = G_DETAIL_SIK.sik.replaceAll(randomCode, num);
+    G_SIK_NUMBER = G_SIK_NUMBER.replaceAll(randomCode, num);
     
-    $('.boardTit .sikDiv').html(changeSik);
+    $('.boardTit .sikDiv').html(G_SIK_NUMBER);
     
-    let sik = calculateStringExpression(changeSik);
+    let sik = calculateStringExpression(G_SIK_NUMBER);
     if(!isNaN(sik)){
         sik = sik.toFixed(5);
         sik = parseFloat(sik);
         
         const sikResult = `
-         <li>
-                        <div class="boardTit width100per">
-                            <p class="center">
-                                <span class="new" style="padding:0">=</span>
-                                ${sik}
-                                
-                            </p>
-                             <p class="expText">
-                                결과값은 소수점 5자리까지 나오며 반올림 됩니다.
-                            </p>
-                        </div>
-                    </li>
+            <li>
+                <div class="boardTit width100per">
+                    <p class="center">
+                        <span class="new" style="padding:0">=</span>
+                        ${sik}
+                        
+                    </p>
+                     <p class="expText">
+                        결과값은 소수점 5자리까지 나오며 반올림 됩니다.
+                    </p>
+                </div>
+            </li>
          `
         $('.addLocalList li').eq(0).after(sikResult);
         
@@ -118,8 +119,8 @@ function getURLParams(){
 
 function getDetailSik(){
     const seq = getURLParams();
-    
     G_DETAIL_SIK = GLOBAL_LOCAL_LIST[seq];
+    G_SIK_NUMBER = GLOBAL_LOCAL_LIST[seq].sik;
     
     $('.boardTit .sikDiv').html(G_DETAIL_SIK.sik);
     
