@@ -1,5 +1,6 @@
 let G_DETAIL_SIK = null;
-let G_SIK_NUMBER = null;
+let G_SIK_RANDOM_OBJ = {};
+
 
 function init(){
     getLocalAddList(getDetailSik);
@@ -8,12 +9,12 @@ function init(){
 
 
 function eventBind(){
-    $(document).on('click', '.li_number', function(){
-        $(this).closest('.random_li').find('.li_number_input').val('').focus();
-    })
+    // $(document).on('click', '.li_number', function(){
+    //     $(this).closest('.random_li').find('.li_number_input').val('').focus();
+    // })
     
     $(document).on('change', '.li_number_input', function(){
-        const num = $(this).val();
+        const num = $(this).val() ? $(this).val() : null;
         const li = $(this).closest('.random_li');
         const randomCode = li.data('random');
         
@@ -51,7 +52,6 @@ function setResultSik(li){
     if(GLOBAL_LOCAL_LIST.length > 0){
         let prevResult = '';
         
-        
         GLOBAL_LOCAL_LIST.map(function(row){
             if(row.result){
                 row.result.map(function(result){
@@ -70,12 +70,16 @@ function setResultSik(li){
 
 
 function changeMainSik(randomCode, num){
+    G_SIK_RANDOM_OBJ[randomCode] = num;
     
-    G_SIK_NUMBER = G_SIK_NUMBER.replaceAll(randomCode, num);
+    let original_sik = G_DETAIL_SIK.sik;
+    for (let key in G_SIK_RANDOM_OBJ ) {
+        if(G_SIK_RANDOM_OBJ[key] || G_SIK_RANDOM_OBJ[key] !== 0){
+            original_sik = original_sik.replace(key, G_SIK_RANDOM_OBJ[key]);
+        }
+    }
     
-    $('.boardTit .sikDiv').html(G_SIK_NUMBER);
-    
-    let sik = calculateStringExpression(G_SIK_NUMBER);
+    let sik = calculateStringExpression(original_sik);
     if(!isNaN(sik)){
         sik = sik.toFixed(5);
         sik = parseFloat(sik);
@@ -120,7 +124,6 @@ function getURLParams(){
 function getDetailSik(){
     const seq = getURLParams();
     G_DETAIL_SIK = GLOBAL_LOCAL_LIST[seq];
-    G_SIK_NUMBER = GLOBAL_LOCAL_LIST[seq].sik;
     
     $('.boardTit .sikDiv').html(G_DETAIL_SIK.sik);
     
@@ -141,8 +144,6 @@ function getDetailSik(){
                     </li>
          `
         $('.addLocalList').append(sikResult);
-        
-        
     }
     
     createButton();
@@ -150,21 +151,27 @@ function getDetailSik(){
 
 
 function createButton(){
-    const sikArray = infixToPostfix(G_DETAIL_SIK.sik).reverse();
+    const sikArray = randomIndex(G_DETAIL_SIK.sik);
     let button_html = '';
     
     sikArray.map(function(row){
         // console.log(row)
         const randomCode = G_RANDOM_ARRAY.find(num => num === row);
         if(randomCode){
+            G_SIK_RANDOM_OBJ[randomCode] = null;
+            
             button_html += `
                 <li class="random_li" data-random="${randomCode}">
                     <a href="javascript:">${randomCode}
-                    <input class="li_number_input" type=number style="opacity:0">
+<!--                    <input class="li_number_input" type=number style="opacity:0">-->
                     <span class="number_span"></span></a>
                     <ul class="depth_1">
                         <li>
-                            <a href="javascript:" class="li_number">숫자</a>
+<!--                            <a href="javascript:" class="li_number">숫자</a>-->
+                            <a href="javascript:">
+                                <input type="number" class="inputNumber li_number_input" placeholder="숫자 입력 후 화면 클릭">
+                            </a>
+                            
                         </li>
                         <li>
                             <a href="javascript:" class="li_sik">답 불러오기</a>
@@ -183,3 +190,15 @@ function createButton(){
     $('.dropdownMenu .menu').html(button_html);
 }
 
+
+function randomIndex(expression){
+    let returnArray = [];
+    
+    for (let i = 0; i < expression.length; i++) {
+        let token = expression[i];
+        if(G_RANDOM_ARRAY.includes(token)){
+            returnArray.push(token);
+        }
+    }
+    return returnArray;
+}

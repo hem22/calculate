@@ -24,6 +24,7 @@ function eventBind(){
         switch(num){
             case "AC":
                 //초기화
+                G_CALCULATE_OBJ.randomNum = 0;
                 G_CALCULATE_OBJ.data = 0;
                 break;
             case "C":
@@ -31,9 +32,9 @@ function eventBind(){
                 G_CALCULATE_OBJ.data = G_CALCULATE_OBJ.data.slice(0, -1);
                 break;
             case "addFormula":
-                G_CALCULATE_OBJ.randomNum += 1;
                 let randomText = G_RANDOM_ARRAY[G_CALCULATE_OBJ.randomNum];
                 G_CALCULATE_OBJ.data += randomText;
+                G_CALCULATE_OBJ.randomNum += 1;
                 break;
             case "result":
                 let result = calculateStringExpression(G_CALCULATE_OBJ.data);
@@ -43,10 +44,6 @@ function eventBind(){
                     G_CALCULATE_OBJ.data = result;
                 }
                 break;
-            // case "addFormula" :
-            //     toast('개발중');
-            //
-            //     break;
             default:
                 //버퍼에 입력 숫자와 연산자 누적
                 G_CALCULATE_OBJ.data += num;

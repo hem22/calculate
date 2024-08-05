@@ -458,11 +458,11 @@ a:focus {
 }
 
 
-.li_number_input {
-    opacity:0;
-    width:0;
-    margin:-8px;
-}
+/*.li_number_input {*/
+/*    opacity:0;*/
+/*    width:0;*/
+/*    margin:-8px;*/
+/*}*/
 
 
 
@@ -521,3 +521,27 @@ a:focus {
 .width100per {
     width:100%
 }
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* 파이어폭스에서의 초기화 방법 */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+.inputNumber {
+    color : white;
+    text-align: center;
+    border: none;
+    background: none;
+}
+
+.inputNumber::placeholder {
+    color: rgba(255, 255, 255, 0.66);
+}
+.inputNumber:focus { outline: none; }
