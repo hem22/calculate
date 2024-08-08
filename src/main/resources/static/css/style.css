@@ -545,3 +545,16 @@ input[type=number] {
     color: rgba(255, 255, 255, 0.66);
 }
 .inputNumber:focus { outline: none; }
+
+.randomNameInput {
+    color: white;
+    padding: 0 10px;
+    margin: 0;
+    width: 100px;
+    background: none;
+    border: none;
+}
+
+.randomNameInput::placeholder {
+    color: rgba(255, 255, 255, 0.66);
+}

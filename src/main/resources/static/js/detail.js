@@ -45,6 +45,22 @@ function eventBind(){
         setLocalAddList();
         toast('리셋이 완료되었습니다.')
     })
+    
+    
+    $(document).on('click','.depthDiv', function(){
+        $(this).find('.randomNameInput').show();
+    })
+    
+    $(document).on('change','.randomNameInput', function(){
+        const random = $(this).closest('.random_li').data('random');
+        const seq = getURLParams();
+        GLOBAL_LOCAL_LIST[seq][random] = $(this).val();
+        
+        setLocalAddList();
+    })
+    
+    
+    
 }
 
 function setResultSik(li){
@@ -132,16 +148,16 @@ function getDetailSik(){
         
         const sikResult = `
          <li>
-                        <div class="boardTit width100per">
-                            <p class="center">
-                                <span class="new" style="padding:0">=</span>
-                                ${lastResult}
-                            </p>
-                             <p class="expText">
-                                이전에 계산된 값 입니다.
-                            </p>
-                        </div>
-                    </li>
+              <div class="boardTit width100per">
+                  <p class="center">
+                      <span class="new" style="padding:0">=</span>
+                      ${lastResult}
+                  </p>
+                   <p class="expText">
+                      이전에 계산된 값 입니다.
+                  </p>
+              </div>
+          </li>
          `
         $('.addLocalList').append(sikResult);
     }
@@ -160,11 +176,18 @@ function createButton(){
         if(randomCode){
             G_SIK_RANDOM_OBJ[randomCode] = null;
             
+            let randomName = null;
+            if(G_DETAIL_SIK[randomCode]){
+                randomName = G_DETAIL_SIK[randomCode];
+            }
+            
             button_html += `
                 <li class="random_li" data-random="${randomCode}">
-                    <a href="javascript:">${randomCode}
-<!--                    <input class="li_number_input" type=number style="opacity:0">-->
-                    <span class="number_span"></span></a>
+                    <a href="javascript:" class="depthDiv">
+                        ${randomCode}
+                        <input type="text" class="randomNameInput" value="${ randomName ? randomName : ''}"
+                        style="${ randomName ? randomName : 'display: none'}" placeholder="이름 저장">
+                    </a>
                     <ul class="depth_1">
                         <li>
 <!--                            <a href="javascript:" class="li_number">숫자</a>-->
@@ -186,6 +209,8 @@ function createButton(){
             `
         }
     })
+    
+    
     
     $('.dropdownMenu .menu').html(button_html);
 }
