@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/default :: default_ts2(~{::title}, ~{::script})}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주자 번호판 01</title>
+    
+<!--    <script defer type="text/javascript" src="/js/dev_dateFormat.js"></script>-->
+    <script type="text/javascript" charSet="utf-8">
+        $(function () {
+            // init();
+        });
+    </script>
+</head>
+<body>
+
+<div class="container">
+<!--    <div class="car-number">156모 6565</div>-->
+    <img src="/image/j04.PNG" alt="프로필 이미지" class="profile-img">
+    <div class="phone-number">
+        <a href="javascript:">☎️ 010.7581.6356</a>
+<!--        <a href="javascript:">📞 010.7581.6356</a>-->
+    </div>
+</div>
+</body>
+</html>
+
+<style>
+    .container {
+        text-align: center;
+        border: 2px solid #ddd;
+        padding: 40px 100px;
+        /*border-radius: 10px;*/
+        /*box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);*/
+    }
+    .profile-img {
+        width: 150px;
+        height: 150px;
+        /*border-radius: 50%;*/
+        object-fit: cover;
+        /*border: 2px solid #ddd;*/
+    }
+    .phone-number {
+        margin-top: 15px;
+        font-size: 25px;
+        font-weight: bold;
+    }
+    .phone-number a {
+        text-decoration: none;
+        color: #454545;
+    }
+    .car-number {
+        color: #454545;
+        font-size: 22px;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+</style>

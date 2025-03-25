@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layout/default :: default_ts(~{::title}, ~{::script})}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aos, ios 공통 dateFormat</title>
+    
+    <script defer type="text/javascript" src="/js/dev_dateFormat.js"></script>
+    <script type="text/javascript" charSet="utf-8">
+        $(function () {
+            init();
+        });
+    </script>
+</head>
+<body>
+<div id="wrap" class="sub">
+    
+    <section class="subSection">
+        <div class="subSectionConts">
+            <ul class="linkLst board">
+                <li>
+                    날짜 변환 전
+                    <p class="date1"></p>
+                </li>
+                <li>
+                    날짜 변환 이후
+                    <p class="date1_change"></p>
+                </li>
+                <li>
+                </li>
+                
+            </ul>
+        </div>
+    </section>
+    
+</div>
+
+
+</body>
+</html>

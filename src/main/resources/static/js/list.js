@@ -16,30 +16,29 @@ function eventBind(){
     })
     
     $(document).on('click', '.delBtn' , function(){
+        // if($(this).hasClass('active')){
+        let checked = $('.delCheckbox:checked');
         
-        if($(this).hasClass('active')){
-            let checked = $('.delCheckbox:checked');
+        if(checked.length > 0){
+            checked.map(function(idx, row){
+                let seq = $(row).index('.delCheckbox');
+                GLOBAL_LOCAL_LIST.splice(seq, 1);
+            })
             
-            if(checked.length > 0){
-                checked.map(function(idx, row){
-                    let seq = $(row).index('.delCheckbox');
-                    GLOBAL_LOCAL_LIST.splice(seq, 1);
+            setLocalAddList(function(){
+                toast('삭제 되었습니다.', function(){
+                    location.href = '/';
                 })
-                
-                setLocalAddList(function(){
-                    toast('삭제 되었습니다.', function(){
-                        location.href = '/';
-                    })
-                })
-            
-            }else{
-                toast('삭제할 식을 선택 후 삭제버튼을 눌러주세요.');
-            }
-            
+            })
+        
         }else{
-            $('li').prepend('<input type=checkbox class="delCheckbox">');
-            $('.delBtn').addClass('active');
+            toast('삭제할 식을 선택 후 삭제버튼을 눌러주세요.');
         }
+            
+        // }else{
+        //     $('li').prepend('<input type=checkbox class="delCheckbox">');
+        //     $('.delBtn').addClass('active');
+        // }
     })
     
     
@@ -56,6 +55,7 @@ function createList(){
     let LIST_HTML = '';
     
     if(GLOBAL_LOCAL_LIST.length > 0){
+        $('.delBtn').show();
         GLOBAL_LOCAL_LIST.map(function(row, idx){
             // LIST_HTML += `
             //             <li>
@@ -63,13 +63,13 @@ function createList(){
             //             </li>`;
             
             LIST_HTML += '<li class="noticeItem" data-seq="'+ idx +'">';
+            LIST_HTML += '  <input type="checkbox" class="delCheckbox">';
             LIST_HTML += '    <a href="javascript:;">';
             LIST_HTML += '        <div class="boardTit">';
             LIST_HTML += '            <p>';
 
-            // LIST_HTML += '<span class="new">'+idx+'</span>';
             LIST_HTML += '<span class="new">'+ (idx + 1) +'</span>';
-            LIST_HTML += row.title ? row.title : '-';
+            LIST_HTML +=    '<span>' + (row.title ? row.title : '-') + '<span>';
             LIST_HTML += '            </p>';
             LIST_HTML += '        </div>';
             LIST_HTML += '        <div class="boardInfo">';
